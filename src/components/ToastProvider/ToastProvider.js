@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 
 export const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 export const ToastContext = createContext();
@@ -22,6 +23,8 @@ export const ToastProvider = ({ children }) => {
     const removeAllToasts = () => {
         setToasts([]);
     };
+
+    useEscapeKey(removeAllToasts);
 
     const toastProviderValue = {
         toasts,
