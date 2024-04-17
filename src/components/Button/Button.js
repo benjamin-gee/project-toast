@@ -2,13 +2,14 @@ import React from 'react';
 
 import styles from './Button.module.css';
 
-function Button({ className = '', ...delegated }) {
-  return (
-    <button
-      className={`${styles.button} ${className}`}
-      {...delegated}
-    />
-  );
+function Button({ className = '', callback, ...delegated }) {
+    return (
+        <button
+            className={`${styles.button} ${className}`}
+            onClick={callback}
+            {...delegated}
+        />
+    );
 }
 
 export default Button;
