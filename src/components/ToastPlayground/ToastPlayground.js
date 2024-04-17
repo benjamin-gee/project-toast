@@ -5,7 +5,8 @@ import ToastShelf from '../ToastShelf/ToastShelf';
 import { ToastContext, VARIANT_OPTIONS } from '../ToastProvider/ToastProvider';
 
 function ToastPlayground() {
-    const { toasts, addToast, removeToast } = React.useContext(ToastContext);
+    const { toasts, addToast, removeToast, removeAllToasts } =
+        React.useContext(ToastContext);
 
     const [selectedVariant, setSelectedVariant] = React.useState(
         VARIANT_OPTIONS[0]
@@ -18,6 +19,20 @@ function ToastPlayground() {
         setMessage('');
         setSelectedVariant(VARIANT_OPTIONS[0]);
     };
+
+    React.useEffect(() => {
+        const escapeKeyListener = (event) => {
+            if (event.keyCode === 27) {
+                removeAllToasts();
+            }
+        };
+
+        document.addEventListener('keydown', escapeKeyListener);
+
+        return () => {
+            document.removeEventListener('keydown', escapeKeyListener);
+        };
+    }, [removeAllToasts]);
 
     return (
         <div className={styles.wrapper}>

@@ -19,10 +19,15 @@ export const ToastProvider = ({ children }) => {
         );
     };
 
+    const removeAllToasts = () => {
+        setToasts([]);
+    };
+
     const toastProviderValue = {
         toasts,
         addToast,
-        removeToast
+        removeToast,
+        removeAllToasts
     };
 
     return (
