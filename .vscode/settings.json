@@ -1,0 +1,4 @@
+{
+    "prettier.configPath": "~/src/joy-of-react/project-toast/.prettierrc",
+    "prettier.tabWidth": 4
+}
